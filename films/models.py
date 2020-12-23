@@ -14,8 +14,7 @@ class Film(models.Model):
     review = models.FloatField('Average review')
 
     def __str__(self):
-        return f'{self.title} {self.description} {self.image} {self.date_filmed} {self.duration} {self.age_limit} ' \
-               f'{self.review}'
+        return f'{self.title}'
 
 
 class TvShow(models.Model):
