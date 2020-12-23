@@ -14,7 +14,9 @@ class Film(models.Model):
     review = models.FloatField('Average review')
 
     def __str__(self):
-        return self.title
+        return f'{self.title} {self.description} {self.image} {self.date_filmed} {self.duration} {self.age_limit} ' \
+               f'{self.review}'
+
 
 class TvShow(models.Model):
     title = models.CharField('TvShow Title', max_length=150)

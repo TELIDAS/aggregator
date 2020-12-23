@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ film.title }}</title>
+</head>
+<body>
+    <header>
+        {% include 'films/films_header.html' %}
+    </header>
+    <div>
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.description }}</p>
+        <p>{{ object.duration }}</p>
+        <p>{{ object.date_filmed }}</p>
+        <p>{{ object.age_limit }}</p>
+        <p>{{ object.review }}</p>
+        <img src="{{ object.image.url }}" alt="">
+    </div>
+</body>
+</html>

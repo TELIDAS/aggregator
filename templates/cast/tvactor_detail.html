@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tvactor.name }}</title>
+</head>
+<body>
+    <header>
+        {% include 'cast/cast_header.html' %}
+    </header>
+    <div>
+        <h2>{{ object.name }}</h2>
+        <p>{{ object.age }}</p>
+        <p>{{ object.gender }}</p>
+        <img src="{{ object.image.url }}" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Films</title>
+</head>
+<body>
+    <header>
+        {% include 'films/films_header.html' %}
+    </header>
+    <div>
+        <ul>
+            {% for i in object_list %}
+            <li class='film'>
+                <img class="film-image" src="{{ i.image.url }}" alt="">
+                <h2><a href="/films/{{ i.pk }}">{{ i.title }}</a></h2>
+                <p class="film-description">{{ i.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

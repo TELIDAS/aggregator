@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TvActor</title>
+</head>
+<body>
+    <header>
+        {% include 'cast/cast_header.html' %}
+    </header>
+    <div>
+        <ul>
+            {% for i in object_list %}
+            <li class='tvactor'>
+                <img class="tvactor-image" src="{{ i.image.url }}" alt="">
+                <h2><a href="/tvactor/{{ i.pk }}">{{ i.name }}</a></h2>
+                <p class="tvactor-age">{{ i.age }}</p>
+                <p class="tvactor-gender">{{ i.gender }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

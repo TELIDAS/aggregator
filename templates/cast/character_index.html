@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character</title>
+</head>
+<body>
+    <header>
+        {% include 'cast/cast_header.html' %}
+    </header>
+    <div>
+        <ul>
+            {% for i in object_list %}
+            <li class='character'>
+                <img class="character-image" src="{{ i.image.url }}" alt="">
+                <h2><a href="/character/{{ i.pk }}">{{ i.name }}</a></h2>
+                <p class="character-age">{{ i.age }}</p>
+                <p class="character-gender">{{ i.gender }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

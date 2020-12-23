@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ anime.title }}</title>
+</head>
+<body>
+    <header>
+        {% include 'films/films_header.html' %}
+    </header>
+    <div>
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.description }}</p>
+        <p>{{ object.episodes_quantity }}</p>
+        <p>{{ object.age_limit }}</p>
+        <p>{{ object.review }}</p>
+        <img src="{{ object.image.url }}" alt="">
+    </div>
+</body>
+</html>
