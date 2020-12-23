@@ -41,7 +41,7 @@ class TvActor(models.Model):
         return f'{self.name}'
 
 
-class Characters(models.Model):
+class Character(models.Model):
     """
     Model for storing characters of the anime
     """
@@ -55,7 +55,7 @@ class Characters(models.Model):
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(choices=gender_choices, max_length=40)
     anime = models.ManyToManyField('films.Anime')
-    image = models.ImageField(upload_to='Characters/')
+    image = models.ImageField(upload_to='Character/')
 
     def __str__(self):
         return f'{self.name}'

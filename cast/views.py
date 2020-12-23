@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 
-from cast.models import Characters, Cast, TvActor
+from cast.models import Character, Cast, TvActor
 
 class CastView(ListView):
     template_name = 'cast/cast_index.html'
@@ -16,9 +16,9 @@ class CharacterView(ListView):
     template_name = 'cast/character_index.html'
 
     def get_queryset(self):
-        return Characters.objects.all()
+        return Character.objects.all()
 class CharacterDetailView(DetailView):
-    model = Characters
+    model = Character
     template_name = 'cast/characters_detail.html'
 
 

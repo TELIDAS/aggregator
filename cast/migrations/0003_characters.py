@@ -12,13 +12,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Characters',
+            name='Character',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=150, verbose_name='Character name')),
                 ('age', models.PositiveSmallIntegerField()),
                 ('gender', models.CharField(choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other...')], max_length=40)),
-                ('image', models.ImageField(upload_to='Characters/')),
+                ('image', models.ImageField(upload_to='Character/')),
                 ('anime', models.ManyToManyField(to='films.Anime')),
             ],
         ),
