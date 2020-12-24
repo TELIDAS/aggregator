@@ -18,17 +18,17 @@
         <p>{{ object.date_filmed }}</p>
         <p>{{ object.age_limit }}</p>
         <p>{{ object.review }}</p>
-        <img src="{{ object.image.url }}" alt="">
+        <img class="film-image" src="{{ object.image.url }}" alt="">
     </div>
     <div>
         <h2>Casts:</h2>
         <ul>
         {% for i in object.casts.all %}
-            <li>
+            <li class="film">
                 <h3>{{ i.name }}</h3>
                 <p>{{ i.age }}</p>
                 <p>{{ i.gender }}</p>
-                <img src="{{ i.image.url }}" alt="">
+                <img class="film-image" src="{{ i.image.url }}" alt="">
             </li>
         {% endfor %}
         </ul>

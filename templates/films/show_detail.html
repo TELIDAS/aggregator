@@ -18,17 +18,17 @@
         <p>{{ object.episodes_quantity }}</p>
         <p>{{ object.age_limit }}</p>
         <p>{{ object.review }}</p>
-        <img src="{{ object.image.url }}" alt="">
+        <img class="show-image" src="{{ object.image.url }}" alt="">
     </div>
     <div>
         <h2>TvActors:</h2>
         <ul>
         {% for i in object.tvactors.all %}
-            <li>
+            <li class="show">
                 <h3>{{ i.name }}</h3>
                 <p>{{ i.age }}</p>
                 <p>{{ i.gender }}</p>
-                <img src="{{ i.image.url }}" alt="">
+                <img class="show-image" src="{{ i.image.url }}" alt="">
             </li>
         {% endfor %}
         </ul>
