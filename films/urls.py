@@ -6,7 +6,7 @@ urlpatterns = [
     path('films/<int:pk>/', FilmDetailView.as_view()),
     path('anime/', AnimeView.as_view()),
     path('anime/<int:pk>/', AnimeDetailView.as_view()),
-    path('show/', TvShowView.as_view()),
+    path('shows/', TvShowView.as_view()),
     path('shows/<int:pk>/', TvShowDetailView.as_view()),
 
 ]

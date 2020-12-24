@@ -20,5 +20,36 @@
         <p>{{ object.review }}</p>
         <img src="{{ object.image.url }}" alt="">
     </div>
+    <div>
+        <h2>Casts:</h2>
+        <ul>
+        {% for i in object.casts.all %}
+            <li>
+                <h3>{{ i.name }}</h3>
+                <p>{{ i.age }}</p>
+                <p>{{ i.gender }}</p>
+                <img src="{{ i.image.url }}" alt="">
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
+      <form action="/films/{{ object.pk }}/" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add comment" />
+        </form>
+    </div>
+    <div>
+        <h2>Comments: </h2>
+        <ul>
+            {% for i in object.comments_film.all %}
+                <li>
+                <h3>{{ i.comment }}</h3>
+                <p>{{ i.date_added }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

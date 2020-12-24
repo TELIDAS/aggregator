@@ -14,7 +14,7 @@ class Cast(models.Model):
     name = models.CharField("Actor's name", max_length=150)
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(choices=gender_choices, max_length=40)
-    films = models.ManyToManyField('films.Film')
+    films = models.ManyToManyField('films.Film', related_name="casts")
     image = models.ImageField(upload_to='cast/', null=True)
 
     def __str__(self):
@@ -34,7 +34,7 @@ class TvActor(models.Model):
     name = models.CharField("Actor's name", max_length=150)
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(choices=gender_choices, max_length=40)
-    films = models.ManyToManyField('films.TvShow')
+    films = models.ManyToManyField('films.TvShow', related_name="tvactors")
     image = models.ImageField(upload_to='tvactor/', null=True)
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Character(models.Model):
     name = models.CharField('Character name', max_length=150)
     age = models.PositiveSmallIntegerField()
     gender = models.CharField(choices=gender_choices, max_length=40)
-    anime = models.ManyToManyField('films.Anime')
+    anime = models.ManyToManyField('films.Anime', related_name="characters")
     image = models.ImageField(upload_to='Character/')
 
     def __str__(self):
