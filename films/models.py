@@ -47,10 +47,10 @@ class TvShow(models.Model):
 class Anime(models.Model):
     title = models.CharField('Anime title', max_length=150, null=True)
     image = models.ImageField(upload_to='anime/')
-    description = models.TextField('Anime description')
-    episodes_quantity = models.PositiveSmallIntegerField('Anime episodes')
-    age_limit = models.PositiveSmallIntegerField('Age limit of Anime')
-    review = models.FloatField('Average review')
+    description = models.TextField('Anime description', null=True)
+    episodes_quantity = models.PositiveSmallIntegerField('Anime episodes', null=True)
+    age_limit = models.PositiveSmallIntegerField('Age limit of Anime', null=True)
+    review = models.FloatField('Average review', null=True)
 
     def __str__(self):
         return f'{self.title}'
