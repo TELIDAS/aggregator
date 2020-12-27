@@ -62,3 +62,26 @@ def parser():
 
 
 parser()
+
+# from bs4 import BeautifulSoup
+# import requests
+# from django.shortcuts import render
+#
+#
+# def dj_bs(request):
+#     if request.method == "POST":
+#         website_link = request.POST.get("https://animekisa.tv/latest/1", None)
+#
+#         # requests
+#         url = website_link  # url
+#         headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0'}  # headers
+#         source = requests.get(url, headers=headers).text  # url source
+#
+#         # BeautifulSoup
+#         soup = BeautifulSoup(source, 'html.parser')
+#         h1_val = soup.h1.string  # h1 value
+#
+#         return render(request, 'django-bs.html', {'h1_val': h1_val})
+#
+#     return render(request, 'django-bs.html')
+#

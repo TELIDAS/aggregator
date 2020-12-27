@@ -1,4 +1,6 @@
 from django.urls import path
+
+# from .parser import dj_bs
 from .views import FilmView, AnimeView, TvShowView, FilmDetailView, AnimeDetailView, TvShowDetailView
 
 urlpatterns = [
@@ -8,5 +10,5 @@ urlpatterns = [
     path('anime/<int:pk>/', AnimeDetailView.as_view()),
     path('shows/', TvShowView.as_view()),
     path('shows/<int:pk>/', TvShowDetailView.as_view()),
-
+    # path('django-bs/', dj_bs, name="django_bs"),
 ]
