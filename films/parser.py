@@ -27,7 +27,7 @@ def get_content(html):
         anime.append(
             {
                 'title': item.find('div', class_='title-box-2').get_text(strip=True),
-                # 'link_product': HOST + item.find('a', class_='an').get('href'),
+                'link_product': HOST + item.find('a', class_='an').get('href'),
                 'image': HOST + item.find('div', class_='image-box').find('img').get('src')
             }
         )
@@ -61,7 +61,6 @@ def parser():
 
 
 
-parser()
 
 # from bs4 import BeautifulSoup
 # import requests
