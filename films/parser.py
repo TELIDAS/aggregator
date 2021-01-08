@@ -67,7 +67,7 @@ def get_shows_content(html):
         shows.append(
             {
                 'title': item.find('div', class_='b-content__inline_item-link').get_text(strip=True),
-                'image': URL2 + item.find('div', class_='b-content__inline_item-cover').find('img').get('src')
+                'image': item.find('div', class_='b-content__inline_item-cover').find('img').get('src')
             }
         )
     return shows
@@ -99,7 +99,7 @@ def get_films_content(html):
         films.append(
             {
                 'title': item.find('div', class_='b-content__inline_item-link').get_text(strip=True),
-                'image': URL3 + item.find('div', class_='b-content__inline_item-cover').find('img').get('src')
+                'image': item.find('div', class_='b-content__inline_item-cover').find('img').get('src')
             }
         )
     return films

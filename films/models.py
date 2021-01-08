@@ -7,7 +7,7 @@ class Film(models.Model):
     Model for storing films with their Cast.
     """
     title = models.CharField('Film Title', max_length=150)
-    image = models.ImageField(upload_to='films/', null=True)
+    image = models.CharField(max_length=250, null=True)
     description = models.TextField('Film description', null=True)
     date_filmed = models.DateField('Date Filmed', null=True)
     duration = models.PositiveSmallIntegerField('Film duration', null=True)
@@ -32,7 +32,7 @@ class Comment(models.Model):
 
 class TvShow(models.Model):
     title = models.CharField('TvShow Title', max_length=150)
-    image = models.ImageField(upload_to='shows/')
+    image = models.CharField(max_length=250, null=True)
     description = models.TextField('Show description', null=True)
     date_filmed = models.DateField('Show Date Filmed', null=True)
     episodes_quantity = models.PositiveSmallIntegerField('Show episodes', null=True)
