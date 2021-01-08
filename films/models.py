@@ -8,11 +8,11 @@ class Film(models.Model):
     """
     title = models.CharField('Film Title', max_length=150)
     image = models.ImageField(upload_to='films/', null=True)
-    description = models.TextField('Film description')
-    date_filmed = models.DateField('Date Filmed')
-    duration = models.PositiveSmallIntegerField('Film duration')
-    age_limit = models.PositiveSmallIntegerField('Age limit', default=3)
-    review = models.FloatField('Average review')
+    description = models.TextField('Film description', null=True)
+    date_filmed = models.DateField('Date Filmed', null=True)
+    duration = models.PositiveSmallIntegerField('Film duration', null=True)
+    age_limit = models.PositiveSmallIntegerField('Age limit', default=3, null=True)
+    review = models.FloatField('Average review', null=True)
 
     def __str__(self):
         return f'{self.title}'
@@ -33,11 +33,11 @@ class Comment(models.Model):
 class TvShow(models.Model):
     title = models.CharField('TvShow Title', max_length=150)
     image = models.ImageField(upload_to='shows/')
-    description = models.TextField('Show description')
-    date_filmed = models.DateField('Show Date Filmed')
-    episodes_quantity = models.PositiveSmallIntegerField('Show episodes')
-    age_limit = models.PositiveSmallIntegerField('Age limit', default=3)
-    review = models.FloatField('Average review')
+    description = models.TextField('Show description', null=True)
+    date_filmed = models.DateField('Show Date Filmed', null=True)
+    episodes_quantity = models.PositiveSmallIntegerField('Show episodes', null=True)
+    age_limit = models.PositiveSmallIntegerField('Age limit', default=3, null=True)
+    review = models.FloatField('Average review', null=True)
 
     def __str__(self):
         return f'{self.title}'
@@ -46,7 +46,7 @@ class TvShow(models.Model):
 
 class Anime(models.Model):
     title = models.CharField('Anime title', max_length=150, null=True)
-    image = models.ImageField(upload_to='anime/')
+    image = models.CharField(max_length=250)
     description = models.TextField('Anime description', null=True)
     episodes_quantity = models.PositiveSmallIntegerField('Anime episodes', null=True)
     age_limit = models.PositiveSmallIntegerField('Age limit of Anime', null=True)

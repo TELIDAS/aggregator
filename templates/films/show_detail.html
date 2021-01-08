@@ -18,7 +18,7 @@
         <p>{{ object.episodes_quantity }}</p>
         <p>{{ object.age_limit }}</p>
         <p>{{ object.review }}</p>
-        <img class="show-image" src="{{ object.image.url }}" alt="">
+        <img class="show-image" src="{{ object.image }}" alt="">
     </div>
     <div>
         <h2>TvActors:</h2>
@@ -28,7 +28,7 @@
                 <h3>{{ i.name }}</h3>
                 <p>{{ i.age }}</p>
                 <p>{{ i.gender }}</p>
-                <img class="show-image" src="{{ i.image.url }}" alt="">
+                <img class="show-image" src="{{ i.image }}" alt="">
             </li>
         {% endfor %}
         </ul>

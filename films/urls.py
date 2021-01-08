@@ -1,7 +1,7 @@
 from django.urls import path
 
 # from .parser import dj_bs
-from .views import FilmView, AnimeView, TvShowView, FilmDetailView, AnimeDetailView, TvShowDetailView
+from .views import FilmView, AnimeView, TvShowView, FilmDetailView, AnimeDetailView, TvShowDetailView, ParserAnimeView
 
 urlpatterns = [
     path('films/', FilmView.as_view()),
@@ -10,5 +10,5 @@ urlpatterns = [
     path('anime/<int:pk>/', AnimeDetailView.as_view()),
     path('shows/', TvShowView.as_view()),
     path('shows/<int:pk>/', TvShowDetailView.as_view()),
-    # path('django-bs/', dj_bs, name="django_bs"),
+    path('parser/', ParserAnimeView.as_view(), name='parser')
 ]

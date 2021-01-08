@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'films',
     'cast',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'

@@ -1,8 +1,10 @@
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from films.forms import CommentForm
+from films.forms import CommentForm, ParserForm
 from films.models import Film, Anime, TvShow
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
 
 
 class FilmView(ListView):
@@ -17,13 +19,24 @@ class FilmDetailView(DetailView):
     template_name = 'films/films_detail.html'
     extra_context = {'form': CommentForm()}
 
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if request.user.is_authenticated and self.object.age_limit <= request.user.age:
+            context = self.get_context_data(object=self.object)
+            return self.render_to_response(context)
+        else:
+            return render(request=request, template_name='films/error_template.html')
+
+
     @csrf_exempt
     def post(self, request, *args, **kwargs):
-        film_id = kwargs['pk']
-        film = Film.objects.get(pk=film_id)
-        form = CommentForm(request.POST, initial={'film': film})
-        if form.is_valid():
-            form.save()
+        if request.user.is_authenticated:
+            film_id = kwargs['pk']
+            film = Film.objects.get(pk=film_id)
+            form = CommentForm(request.POST, initial={'film': film})
+            if form.is_valid():
+                form.save()
 
         return self.get(request, *args, **kwargs)
 
@@ -66,3 +79,31 @@ class TvShowDetailView(DetailView):
             form.save()
 
         return self.get(request, *args, **kwargs)
+
+
+class ParserAnimeView(FormView):
+    template_name = 'parser_form.html'
+    form_class = ParserForm
+    success_url = '/anime/'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.parse_data()
+            return HttpResponseRedirect(self.success_url)
+        else:
+            return super(ParserAnimeView, self).post(request, *args, **kwargs)
+
+
+class ParserShowsView(ParserAnimeView, FormView):
+    template_name = 'parser_form.html'
+    form_class = ParserForm
+    success_url = '/shows/'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.parse_data()
+            return HttpResponseRedirect(self.success_url)
+        else:
+            return super(ParserShowsView, self).post(request, *args, **kwargs)
