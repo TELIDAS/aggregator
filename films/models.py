@@ -6,7 +6,7 @@ class Film(models.Model):
     """
     Model for storing films with their Cast.
     """
-    title = models.CharField('Film Title', max_length=150)
+    title = models.CharField('Film Title', max_length=150, null=True)
     image = models.CharField(max_length=250, null=True)
     description = models.TextField('Film description', null=True)
     date_filmed = models.DateField('Date Filmed', null=True)
