@@ -7,6 +7,7 @@ from .parser import parser
 from films.forms import CommentForm, ParserForm
 from films.models import Film, Anime, TvShow, Comment
 from users.models import CustomUser
+from .views import ParserAnimeView
 
 
 class TestParser(TestCase):
@@ -24,18 +25,29 @@ class TestParser(TestCase):
         self.assertEqual(None, dom)
 
     # def test_parser_form(self):
+    #     global form_parser
     #     try:
-    #         dom2 = ParserForm()
+    #         data = {
+    #             'title': 'Gekidol',
+    #             'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
+    #         }
+    #         form_parser = ParserForm(data)
     #     except:
     #         print('Error')
-    #     is_valid = dom2.is_valid()
+    #     is_valid = form_parser.is_valid()
     #     self.assertTrue(is_valid)
-    #     dom2.save()
-
-
+    #     form_parser.save()
 
     def test_parser_views(self):
-        pass
+        data = {'title': 'Gekidol',
+                'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
+                }
+        ParserAnimeView()
+        client = Client()
+        user = CustomUser.objects.create(age=101, username='text')
+        client.force_login(user)
+        response = client.get(path=f'/anime/')
+        self.assertEqual(response.status_code, 200)
 
 
 class TestModel(TestCase):
