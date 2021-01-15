@@ -14,10 +14,7 @@ class TestParser(TestCase):
 
     def test_parser_functions(self):
         global dom
-        payload = {
-            'title': 'Gekidol',
-            'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
-        }
+
         try:
             dom = parser()
         except AttributeError:
