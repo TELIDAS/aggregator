@@ -1,12 +1,11 @@
 from datetime import date
 
 from django.test import TestCase, Client
-from django.test.html import HTMLParseError
 
-from .parser import parser
 from films.forms import CommentForm, ParserForm
 from films.models import Film, Anime, TvShow, Comment
 from users.models import CustomUser
+from .parser import parser
 from .views import ParserAnimeView
 
 
@@ -22,13 +21,17 @@ class TestParser(TestCase):
         self.assertTrue(dom)
 
     def test_parser_form(self):
-        data = {'title': 'Gekidol',
-                'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
-                }
+        payload = {
+            'title': 'New title',
+            'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
+
+        }
+        film = Film.objects.create(**payload)
+        media_type = 'Film'
+        data = {'film': film, 'media_type': media_type}
         form_parser = ParserForm(data)
         is_valid = form_parser.is_valid()
         self.assertTrue(is_valid)
-        form_parser.save()
 
 
     def test_parser_views(self):
