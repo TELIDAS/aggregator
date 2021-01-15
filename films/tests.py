@@ -4,7 +4,7 @@ from django.test import TestCase, Client
 from django.test.html import HTMLParseError
 
 from .parser import parser
-from films.forms import CommentForm
+from films.forms import CommentForm, ParserForm
 from films.models import Film, Anime, TvShow, Comment
 from users.models import CustomUser
 
@@ -13,16 +13,26 @@ class TestParser(TestCase):
 
     def test_parser_functions(self):
         global dom
-
+        payload = {
+            'title': 'Gekidol',
+            'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
+        }
         try:
             dom = parser()
         except AttributeError:
             print('typeerror')
         self.assertEqual(None, dom)
 
+    # def test_parser_form(self):
+    #     try:
+    #         dom2 = ParserForm()
+    #     except:
+    #         print('Error')
+    #     is_valid = dom2.is_valid()
+    #     self.assertTrue(is_valid)
+    #     dom2.save()
 
-    def test_parser_form(self):
-        pass
+
 
     def test_parser_views(self):
         pass
@@ -182,8 +192,6 @@ class TestModel(TestCase):
             TvShow.objects.get(pk=pk)
 
 
-
-
 class TestForms(TestCase):
     """
     Testing film forms
@@ -317,4 +325,3 @@ class TestViews(TestCase):
         client.force_login(user)
         response = client.get(path=f'/films/{film.pk}/')
         self.assertEqual(response.status_code, 200)
-
