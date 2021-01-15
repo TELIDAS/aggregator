@@ -48,10 +48,10 @@ def parser():
         for page in range(0, 1):
             html = get_html(URL, params={'page': page})
             anime.extend(get_content(html.text))
-            print(anime)
+            return anime
     else:
         raise ValueError('error in ANIME parser, baby')
-parser()
+
 ################ parser shows:
 
 def get_shows_html(url2, params=''):

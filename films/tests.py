@@ -22,21 +22,17 @@ class TestParser(TestCase):
             dom = parser()
         except AttributeError:
             print('typeerror')
-        self.assertEqual(None, dom)
+        self.assertTrue(dom)
 
-    # def test_parser_form(self):
-    #     global form_parser
-    #     try:
-    #         data = {
-    #             'title': 'Gekidol',
-    #             'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
-    #         }
-    #         form_parser = ParserForm(data)
-    #     except:
-    #         print('Error')
-    #     is_valid = form_parser.is_valid()
-    #     self.assertTrue(is_valid)
-    #     form_parser.save()
+    def test_parser_form(self):
+        data = {'title': 'Gekidol',
+                'image': 'https://animekisa.tv/img/coversjpg/gekidol.jpg.webp?115'
+                }
+        form_parser = ParserForm(data)
+        is_valid = form_parser.is_valid()
+        self.assertTrue(is_valid)
+        form_parser.save()
+
 
     def test_parser_views(self):
         data = {'title': 'Gekidol',
